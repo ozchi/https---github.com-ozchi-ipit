@@ -43,3 +43,6 @@ const vuectrl = Vue.createApp({
 }).mount('#mainDiv');
 
 vuectrl.dataUpdate();
+
+
+
