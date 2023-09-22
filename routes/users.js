@@ -1,7 +1,7 @@
 var express = require('express');
 const bcrypt = require('bcrypt');
 // npm install bcrypt
-const saltRounds = 10;  // 指定生成salt的复杂度
+const saltRounds = 10;  
 var router = express.Router();
 const tokenManager = require('./tokenManager');
 
