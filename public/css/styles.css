@@ -338,3 +338,31 @@ white-space: nowrap;
     margin-bottom: 20px;
     margin-left: 600px;
 }
+
+.degree-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+  }
+  
+  .degree-item {
+    flex: 1 0 calc(20% - 20px);
+    background-color: #f0f0f0; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    border-radius: 10px;
+    box-sizing: border-box; 
+    text-align: center;
+  }
+  
+  .degree-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+  
+  .degree-name {
+    font-weight: bold; 
+  }
+  

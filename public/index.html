@@ -92,9 +92,16 @@
 
         <div class="placeholder_div">
             
-            <ul>
-                <li v-for="degree in degree">{{ degree.name }} - Level: {{ degree.level }} - Suffix: {{ degree.name_suffix }}</li>
+            <ul class="degree-list">
+                <li v-for="degree in degree" class="degree-item">
+                  <div class="degree-box">
+                    <div class="degree-name">{{ degree.name }}</div>
+                    <div>Level: {{ degree.level }}</div>
+                    <div>Suffix: {{ degree.name_suffix }}</div>
+                  </div>
+                </li>
             </ul>
+              
             <p v-if="errorMessage" style="color: red;">{{ errorMessage }}</p>
         </div>
     
