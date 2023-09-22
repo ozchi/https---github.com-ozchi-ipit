@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/login.css">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script type="text/javascript" src="/javascripts/create_account.js"  defer></script>
+        <meta charset="UTF-8">
+        <title>Create Account</title>
+    </head>
+    <body>
+        <!-- hyperlinks to other pages -->
+        <div class="section modal-container header-content">
+            <!-- <a href="/">Home</a> -->
+            <a href="/add-course.html" target="_self">Add Course</a>
+            <a href="/add-new-course.html" target="_self">Add New Course</a>
+            <a href="/add-new-degree.html" target="_self">Add New Degree</a>
+            <a href="/edit-course.html" target="_self">Edit Course</a>
+        </div>
+        <!-- create account form NEEDS UPDATING -->
+        <form>
+            <div  id="mainDiv" class="center container">
+                <!-- Email field -->
+                <div class="center"><label >Email:</label></div></br>
+                <div class="center"><input   v-model="email"  class="input[type=text]"></input></div></br> 
+                <!-- type=password indicates that it is a password textbox field and censors the input words -->
+                <!-- Password field -->
+                <div class="center"><label>Password: </label></div></br>
+                <div class="center"><input   v-model="password"  type="password"></input></div></br>
+
+                <div class="center">
+                    <button  class="btn-reg" @click.prevent="reg()"><div class="inside_button"> Create Account</div></button> 
+                    <button class="btn-signin" @click.prevent="login()"><div class="inside_button"> Already have an account? </div></button>
+                </div>
+                <div class="center"><label >{{post_result}}</label></div></br>
+            </div>
+        </form>
+    </body>
+</html>

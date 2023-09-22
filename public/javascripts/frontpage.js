@@ -19,6 +19,14 @@ const vuectrl = Vue.createApp({
         };
     },
     methods: {
+        
+        doSearching() {
+            console.log("Searching...");
+            },
+        doLogin() {
+            console.log("login...");
+            window.location.href = "login.html";
+        },
         dataUpdate(){
             vuectrl.fetchData("/api/course_streams", "stream");
             vuectrl.fetchData("/api/degree_levels", "level");

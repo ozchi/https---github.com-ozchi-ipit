@@ -4,6 +4,17 @@ const router = express.Router();
 
 
 router.get('/courses', (req, res) => {
+       /**
+     * todo
+     *  const token = req.cookies.userToken;
+
+    if (tokenManager.verifyToken(token)) {
+        // Token is valid, proceed with the request
+        // res.send('You are authenticated!');
+    } else {
+        // res.status(401).send('Authentication required.');
+    }
+     */
     req.pool.query('SELECT * FROM course', (err, results) => {
         if (err) {
             res.status(500).json({ error: err.message });

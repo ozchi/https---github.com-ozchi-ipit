@@ -6,97 +6,102 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="/javascripts/frontpage.js" defer></script>
     <link rel="icon" type="image/x-icon" href="images/icons8-study-64.png">
+    <script src="https://unpkg.com/vue@3"></script>
+
 </head>
 
 <body>
-    <div id ="Header">
-        <a href="/">Curriculum Helper</a>
-        <button id="theme_change">
-            <a href="#"> Theme Change</a>
-        </button>
-    </div>
+    <div id="mainDiv">
+        <div id ="Header">
+            <a href="/">Curriculum Helper</a>
+            <button id="theme_change">
+                <a href="#"> Theme Change</a>
+            </button>
+        </div>
 
-    <nav class="nav_bar">
-        <a class="nav_unit" href="#">PlaceHolder1</a>
-        <a class="nav_unit" href="#">PlaceHolder2</a>
-        <a class="nav_unit" href="#">PlaceHolder3</a>
-        <a class="nav_unit" href="#">PlaceHolder4</a>
-    </nav>
+        <nav class="nav_bar">
+            <a class="nav_unit" href="#">PlaceHolder1</a>
+            <a class="nav_unit" href="#">PlaceHolder2</a>
+            <a class="nav_unit" href="#">PlaceHolder3</a>
+            <a class="nav_unit" href="#">PlaceHolder4</a>
+        </nav>
 
-    <div id="main_part">
-        <div id="detailed_part">
-            <div class="head_1">
-                <div class="left_1">
-                    <div class="title_slogan">
+        <div id="main_part">
+            <div id="detailed_part">
+                <div class="head_1">
+                    <div class="left_1">
+                        <div class="title_slogan">
                         
-                        <div class="title_1">
-                            <div class="make_start_world">
-                            Make your coordination easier
-                            </div>
+                            <div class="title_1">
+                                <div class="make_start_world">
+                                Make your coordination easier
+                                </div>
     
-                        </div>
+                            </div>
                             
-                        <div class="slogaan">
-                            <div class="slogaan-1">
-                                Browse degree structure and course relationships with just one click.
+                            <div class="slogaan">
+                                <div class="slogaan-1">
+                                    Browse degree structure and course relationships with just one click.
+                                </div>
                             </div>
-                        </div>
                     
-                        <div class="search_bar">
-                            <div class="search_box">
-                                <div class="search_icon">
-                                    <img class="search_icom_1" src="images/search-icon@2x.png">
-                                </div>
-                                <input id ="search-value" type="text" name = "searching_value" placeholder="Course Name Or Course Number">                          
-                                </div>
-                                
-                                <div id = "widget_wrapper">
-                                    <div class="drop_down">
-                                        <div class="select_mdc" data-id="anima-widget">
-                                            <div class="select_anchor" role="button" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-disabled="false">
-                                                <select id="demo-label" name="cars" id="cars" class="a1">
-                                                    <option value="All_categories">All categories</option>
-                                                    <option value="get_Degrees">Degrees</option>
-                                                    <option value="get_courses">courses</option>
-                                                  </select>                     
-                                            </div>
+                            <div class="search_bar">
+                                <div class="search_box">
+                                    <div class="search_icon">
+                                        <img class="search_icom_1" src="images/search-icon@2x.png">
                                     </div>
-                                </div>
+                                    <input id ="search-value" type="text" name = "searching_value" placeholder="Course Name Or Course Number">                          
+                                    </div>
+                                
+                                    <div id = "widget_wrapper">
+                                        <div class="drop_down">
+                                            <div class="select_mdc" data-id="anima-widget">
+                                                <div class="select_anchor" role="button" aria-haspopup="listbox" aria-expanded="false" tabindex="0" aria-disabled="false">
+                                                    <select id="demo-label" name="cars" id="cars" class="a1">
+                                                        <option value="All_categories">All categories</option>
+                                                        <option value="get_Degrees">Degrees</option>
+                                                        <option value="get_courses">courses</option>
+                                                    </select>                     
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button id="btnSearch" class="button_search" onclick="doSearching()">
+                                    <div class="inside_search_button"> Search </div>
+                                    </button>
+                                    <button id="btnLogin" class="button_login" @click="doLogin()">
+                                        <div class="inside_search_button"> Login </div>
+                                    </button>
                             </div>
-                            <button id="btnSearch" class="button_search" onclick="doSearching()">
-                                <div class="inside_search_button"> Search </div>
-                                </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 
-    <div id="background_two_buttons">
-            <button class="sub_button_format"> Degree </button>
-            <button class="sub_button_format"> Course </button>
+        <div id="background_two_buttons">
+                <button class="sub_button_format"> Degree </button>
+                <button class="sub_button_format"> Course </button>
         
-            <div id="add_degree">
-                <a href="#"> + Add new degree 
-            </div>
+                <div id="add_degree">
+                    <a href="#"> + Add new degree 
+                </div>
         </div>
 
-    <div class="placeholder_div">
-        <div id="mainDiv">
+        <div class="placeholder_div">
+            
             <ul>
                 <li v-for="degree in degrees">{{ degree.name_suffix }}</li>
             </ul>
             <p v-if="errorMessage" style="color: red;">{{ errorMessage }}</p>
         </div>
-        
-    </div>
-
+    
  
-    <footer class="footer">
-            <p class="footer-text">© Team8 2023 All rights reserved</p>
-    </footer>
+        <footer class="footer">
+                <p class="footer-text">© Team8 2023 All rights reserved</p>
+        </footer>
+    </div>
 </body>
 </html>
