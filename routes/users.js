@@ -5,28 +5,28 @@ const saltRounds = 10;  // 指定生成salt的复杂度
 var router = express.Router();
 const tokenManager = require('./tokenManager');
 
-// 注册新用户
+
 router.post('/reg', (req, res) => {
 
   const { email, password } = req.body;
 
-  // 你的数据库查询代码（这里仅作为示例，可能需要调整以适应你的实际数据库和查询）
-  const query = "SELECT user_id FROM users WHERE email = ?";  // 注意：这是一个简化示例，实际生产中不应明文存储密码！
+  
+  const query = "SELECT user_id FROM users WHERE email = ?";  
 
   req.pool.query(query, [email], (error, results) => {
       
 
       if (error) {
-          // 查询出错，你可以在此处理错误
+          
           res.status(500).json({ status: 'ERROR', message: 'Internal Server Error' });
           return;
       }
 
       if (results.length > 0) {
-        // 找到匹配的用户，说明该邮箱已经被注册了
+        
         res.json({ status: 'ERROR', message: "Email already registered." });
     } else {
-        // 未找到匹配的邮箱，执行插入新用户的操作
+        
         const hashedPassword = bcrypt.hashSync(password, saltRounds);
         console.log("reg, insert ", password, hashedPassword)
         const insertUserQuery = "INSERT INTO users (email, password) VALUES (?, ?)";
@@ -40,7 +40,7 @@ router.post('/reg', (req, res) => {
                 return;
             }
             
-            // 返回新用户的user_id
+            
             res.json({ status: 'OK', user_id: insertResults.insertId });
         });
     }
@@ -49,17 +49,17 @@ router.post('/reg', (req, res) => {
 
 
 
-// 老用户登录
+
 router.post('/login', (req, res) => {
 
   const { email, password } = req.body;
 
-  // 你的数据库查询代码（这里仅作为示例，可能需要调整以适应你的实际数据库和查询）
-  const query = "SELECT user_id,email,password FROM users WHERE email = ?";  // 注意：这是一个简化示例，实际生产中不应明文存储密码！
+  
+  const query = "SELECT user_id,email,password FROM users WHERE email = ?";  
 
   req.pool.query(query, [email], (error, results) => {
       if (error) {
-          // 查询出错，你可以在此处理错误
+          
           res.status(500).json({ status: 'ERROR', message: 'Internal Server Error' });
           return;
       }
@@ -67,7 +67,7 @@ router.post('/login', (req, res) => {
       if (results.length > 0) {
           console.log(results)
 
-          // 找到匹配的用户，返回user_id
+          
           const hashedPassword = bcrypt.hashSync(password, saltRounds);
           console.log("login, fetch ", password, hashedPassword)
         
@@ -90,7 +90,7 @@ router.post('/login', (req, res) => {
             res.status(401).json({ status: 'ERROR', message: 'password incorrect' });
           }
       } else {
-          // 未找到匹配的用户，返回错误信息
+          
           console.log("not found");
           res.status(401).json({ status: 'ERROR', message: 'User not found' });
       }
