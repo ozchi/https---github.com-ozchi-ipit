@@ -89,14 +89,11 @@
             <ul>
                 <li v-for="degree in degrees">{{ degree.name_suffix }}</li>
             </ul>
+            <p v-if="errorMessage" style="color: red;">{{ errorMessage }}</p>
         </div>
         
     </div>
-    <div id="mainDiv">
-        <ul>
-            <li v-for="degree in degrees">{{ degree.name_suffix }}</li>
-        </ul>
-    </div>
+
  
     <footer class="footer">
             <p class="footer-text">© Team8 2023 All rights reserved</p>

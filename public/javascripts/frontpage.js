@@ -6,15 +6,16 @@ const vuectrl = Vue.createApp({
     data() {
         return {
             placeholder: "Result placeholder",
-            stream: {},
-            level: {},
-            course: {},
-            degree: {},
-            degree_course: {},
+            stream: [],
+            level: [],
+            course: [],
+            degree: [],
+            degree_course: [],
             type: ["core", "elective","core & elective", "project", "core & project", "elective & project", "core, elective & project"],
             term: ["Semester 1", "Semester 2", "All year"],
-            pre_requisites: {},
-            incompatibles: {}
+            pre_requisites: [],
+            incompatibles: [],
+            errorMessage: null
         };
     },
     methods: {
@@ -32,8 +33,11 @@ const vuectrl = Vue.createApp({
             req.onreadystatechange = function () {
                 if (req.readyState === 4 && req.status === 200) {
                     if (req.response) {
+                        
                         vuectrl[dest_var] = JSON.parse(req.response);
                     }
+                }else{
+                    vuectrl.errorMessage = "Error fetching data from " + target_loc + ". Status: " + req.status;
                 }
             };
             req.open("GET", target_loc);
